@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanye-west</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-800 h-screen flex justify-center items-center">
+    <section class="max-w-full w-6/12 mx-auto">
+        <img class="rounded-full shadow-2xl shadow-gray-500 w-36 h-36" src="images.jfif" alt="">
+        <div class="bg-white shadow-md shadow-slate-400 mt-3 h-36 px-14 py-5 rounded-3xl grid place-items-center">
+            <blockquote id="block-quote" class="font-semibold text-xl">Please Click Next Button !!!</blockquote>
+        </div>
+        <div class="text-right mt-3">
+            <button onclick="quoteLoad()"
+                class="bg-slate-200 shadow font-semibold shadow-orange-300 px-8 py-3 rounded-full hover:bg-slate-300">Next</button>
+        </div>
+    </section>
+    <script>
+        const quoteLoad = async () => {
+            const res = await fetch('https://api.kanye.rest/');
+            const data = await res.json();
+            quoteDisplay(data)
+        }
+        const quoteDisplay = (data) => {
+            const quoteField = document.getElementById('block-quote');
+            quoteField.innerText =`"${data.quote}"`;
+        }
+    </script>
+</body>
+
+</html>
